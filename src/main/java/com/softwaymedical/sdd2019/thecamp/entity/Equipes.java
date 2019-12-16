@@ -72,8 +72,43 @@ public class Equipes {
 		return (float) result / equipes.size();
 	}
 	
+	public int getNombreParticipants() {
+		int result = 0;
+		for (Equipe equipe : equipes) {
+			result += equipe.getPersonnes().size();
+		}
+		return result;
+	}
+	
 	public Optional<Equipe> getEquipeIncomplete(int nbPersGroup) {
 		return getEquipes().stream().filter(equipe -> equipe.getPersonnes().size() < nbPersGroup).findFirst();
+	}
+	
+	public Optional<Equipe> getEquipeSansTechLead() {
+		return getEquipes().stream().filter(equipe -> equipe.getNombreTechleads() == 0).findFirst();
+	}
+	
+	public Optional<Equipe> getEquipeSexeVilleSquad(String sexe, int nbSexeMin, String ville, int nbVilleMin, String squad) {
+		Optional<Equipe> equipeOpt = getEquipes().stream() //
+				.filter(equipe -> equipe.getNombreSexe(sexe) < nbSexeMin) //
+				.filter(equipe -> equipe.getNombreVille(ville) < nbVilleMin) //
+				.filter(equipe -> equipe.getNombreSquad(squad) < 2) //
+				.findFirst();
+		
+		if (!equipeOpt.isPresent()) {
+			equipeOpt = getEquipes().stream() //
+					.filter(equipe -> equipe.getNombreSexe(sexe) < nbSexeMin) //
+					.filter(equipe -> equipe.getNombreSquad(squad) < 2) //
+					.findFirst();
+		}
+		
+		if (!equipeOpt.isPresent()) {
+			equipeOpt = getEquipes().stream() //
+					.filter(equipe -> equipe.getNombreSexe(sexe) < nbSexeMin) //
+					.findFirst();
+		}
+		
+		return equipeOpt;
 	}
 
 }

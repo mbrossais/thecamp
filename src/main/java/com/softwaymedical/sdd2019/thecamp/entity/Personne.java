@@ -48,14 +48,6 @@ public class Personne {
 		return "F".equals(sexe);
 	}
 
-	public boolean isLyon() {
-		return "Lyon".equals(ville);
-	}
-	
-	public boolean isParis() {
-		return "Paris".equals(ville);
-	}
-	
 	public String getNom() {
 		return nom;
 	}
