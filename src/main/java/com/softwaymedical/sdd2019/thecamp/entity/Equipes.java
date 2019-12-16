@@ -46,5 +46,21 @@ public class Equipes {
 	public float getMoyenneHommes() {
 		return getMoyenneSexe("H");
 	}
+	
+	private float getMoyenneVille(String ville) {
+		int result = 0;
+		for(Equipe equipe : equipes) {
+			result += equipe.getNombreVille(ville);
+		}
+		return (float) result / equipes.size();
+	}
+	
+	public float getMoyenneLyon() {
+		return getMoyenneVille("Lyon");
+	}
+	
+	public float getMoyenneMeyreuil() {
+		return getMoyenneVille("Meyreuil");
+	}
 
 }
