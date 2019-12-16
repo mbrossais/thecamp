@@ -1,4 +1,4 @@
-package test.com.softwaymedical.sdd2019.thecamp;
+package com.softwaymedical.sdd2019.thecamp;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
