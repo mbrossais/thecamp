@@ -86,25 +86,64 @@ try {
         var $nbPersGroup = $('#nbPersGroup');
 
         $calcul.on('click', function () {
+
+            var myHeaders = new Headers({
+                "Content-Type": "application/json"
+            });
+            //   console.log("myHEaders");
+            //   console.log(myHeaders);
+            var mybody = {
+                nbPersGroup: parseInt($nbPersGroup.val(), 10),
+                listeParticipant: listeParticipant
+            };
+
+            console.log(mybody);
+
+            var myInit = {
+                method: 'POST',
+                body: JSON.stringify(mybody),
+                headers: myHeaders
+            };
+
+
+
+            var url = new Request('http://localhost:8080/thecamp/equipes', myInit);
+
+            fetch(url, myInit)
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                })
+                .then(function (json) {
+                    console.log(json);
+                    return json;
+                }).catch(function (error) {
+                    console.error("Posting data fail " + error.message);
+                });
+
+
+
+
             // console.log(listeParticipant);
             // console.log($nbPersGroup.val());
-            console.log(
-                {
-                    nbPersGroup: $nbPersGroup.val(),
-                    listeParticipant
-                }
-            );
-            console.log(JSON.stringify( {
-                nbPersGroup: $nbPersGroup.val(),
-                listeParticipant
-            }));
+            // console.log(
+            //     {
+            //         nbPersGroup: $nbPersGroup.val(),
+            //         listeParticipant
+            //     }
+            // );
+            // console.log(JSON.stringify({
+            //     nbPersGroup: $nbPersGroup.val(),
+            //     listeParticipant
+            // }));
         });
 
 
 
-// $nbPersGroup.on('change', function () {
-//     console.log(listeParticipant);
-// });
+        // $nbPersGroup.on('change', function () {
+        //     console.log(listeParticipant);
+        // });
 
         var $fileInput = $('#input');
         console.log($fileInput);
@@ -142,17 +181,7 @@ try {
                     // .fromFile(csvFilePath)
                     .then((jsonObj) => {
                         console.log(jsonObj);
-                       
-                        // var values = jsonObj.map(x => {
-                        //     var data = {};
-                        //     data.typewi = x.type.charAt(0);
-                        //     data.points = x.points || '--';
-                        //     data.libelle = x.summary;
-                        //     data.wi = x.identifier;
-                        //     data.qrcode = RTC_URL + x.identifier;
-                        //     data.classement = x.classement;
-                        //     return data;
-                        // });
+
                         listeParticipant = jsonObj;
                     })
             });
