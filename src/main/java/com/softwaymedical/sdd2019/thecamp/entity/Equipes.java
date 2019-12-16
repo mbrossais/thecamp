@@ -2,6 +2,7 @@ package com.softwaymedical.sdd2019.thecamp.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Equipes {
 	
@@ -69,6 +70,10 @@ public class Equipes {
 			result += equipe.getNombreSquad(squad);
 		}
 		return (float) result / equipes.size();
+	}
+	
+	public Optional<Equipe> getEquipeIncomplete(int nbPersGroup) {
+		return getEquipes().stream().filter(equipe -> equipe.getPersonnes().size() < nbPersGroup).findFirst();
 	}
 
 }
