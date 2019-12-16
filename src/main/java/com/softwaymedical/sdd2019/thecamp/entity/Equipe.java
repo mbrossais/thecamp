@@ -52,8 +52,8 @@ public class Equipe {
 		return getNombreVille("Lyon");
 	}
 	
-	public int getNombreMeyreuil() {
-		return getNombreVille("Meyreuil");
+	public int getNombreParis() {
+		return getNombreVille("Paris");
 	}
 
 	public int getNombreSquad(String squad) {
