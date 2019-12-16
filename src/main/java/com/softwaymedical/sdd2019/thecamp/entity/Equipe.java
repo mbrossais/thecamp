@@ -6,4 +6,8 @@ public class Equipe {
 	
 	private List<Personne> personnes;
 
+	public List<Personne> getPersonnes() {
+		return personnes;
+	}
+
 }
