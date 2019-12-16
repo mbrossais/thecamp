@@ -1,0 +1,101 @@
+.col {
+    float: left;
+    width: 33%;
+    border-right: 1pt dashed
+}
+
+.col.col1 {
+    border-left: 1pt dashed
+}
+
+.postit {
+    padding: 10px;
+    border-bottom: 1pt dashed;
+}
+
+.postit:first-child {
+    border-top: 1pt dashed;
+}
+
+.container {
+    width: 1500px
+}
+
+.save {
+    display: none
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr.line1 {
+    height: 84px
+}
+
+tr.line2 {
+    height: 158px;
+    word-break: break-word;
+}
+
+tr.line3 {
+    height: 58px
+}
+
+td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.cellWi {
+    font-size: 50px
+}
+
+.cellQRCode {
+    color: red;
+    font-size: 30px;
+    width: 20%
+}
+
+.cellLibelle {
+    font-size: 20px
+}
+
+.cellPoints {
+    font-size: 20px;
+    width: 20%
+}
+
+.cellDev {
+    width: 40%
+}
+
+.cellVerif {
+    width: 40%
+}
+
+.cellVersion {
+    width: 15%;
+}
+
+.cellStatut {
+    width: 30%;
+    font-size: 12px;
+    text-align: left;
+    padding: 5px;
+}
+
+.cellStatut>div:not(:last-child) {
+    margin-bottom: 15px
+}
+
+@media print {
+    .divTakeItEasy {
+        display: none
+    }
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
