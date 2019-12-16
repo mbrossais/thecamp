@@ -45,7 +45,7 @@ public class Equipes {
 	}
 	
 	public float getMoyenneHommes() {
-		return getMoyenneSexe("H");
+		return getMoyenneSexe("M");
 	}
 	
 	private float getMoyenneVille(String ville) {
