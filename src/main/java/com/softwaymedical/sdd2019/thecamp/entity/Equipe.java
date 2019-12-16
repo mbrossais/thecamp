@@ -1,11 +1,20 @@
 package com.softwaymedical.sdd2019.thecamp.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Equipe {
 	
-	private List<Personne> personnes;
+	private final List<Personne> personnes;
+
+	public Equipe() {
+		this.personnes = new ArrayList<Personne>();
+	}
+
+	public List<Personne> getPersonnes() {
+		return personnes;
+	}
 
 	public Equipe(List<Personne> personnes) {
 		this.personnes = personnes;
