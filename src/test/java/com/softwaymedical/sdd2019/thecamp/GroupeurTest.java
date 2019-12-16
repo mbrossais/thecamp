@@ -31,17 +31,22 @@ public class GroupeurTest {
 	private static final String SEXE_F = "F";
 	private static final String VILLE_LYON = "Lyon";
 	private static final String VILLE_MEY = "Meyreuil";
+	private static final String VILLE_PAR = "Paris";
 	private static final Personne TECHLEAD_H_LYON_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_RIS, SEXE_M, VILLE_LYON);
 	private static final Personne TECHLEAD_F_LYON_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_RIS, SEXE_F, VILLE_LYON);
+	private static final Personne TECHLEAD_F_LYON_GAP = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_GAP, SEXE_F, VILLE_LYON);
+	private static final Personne TECHLEAD_F_LYON_ITO = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_ITO, SEXE_F, VILLE_LYON);
 	private static final Personne DEV_H_LYON_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_RIS, SEXE_M, VILLE_LYON);
 	private static final Personne DEV_F_LYON_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_RIS, SEXE_F, VILLE_LYON);
-	private static final Personne TECHLEAD_H_MEY_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_RIS, SEXE_M, VILLE_LYON);
-	private static final Personne TECHLEAD_F_MEY_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_RIS, SEXE_F, VILLE_LYON);
-	private static final Personne DEV_H_MEY_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_RIS, SEXE_M, VILLE_LYON);
-	private static final Personne DEV_H_MEY_ITO = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_ITO, SEXE_M, VILLE_LYON);
-	private static final Personne DEV_H_MEY_GAP = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_GAP, SEXE_M, VILLE_LYON);
-	private static final Personne DEV_H_MEY_IMG = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_IMG, SEXE_M, VILLE_LYON);
-	private static final Personne DEV_F_MEY_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_RIS, SEXE_F, VILLE_LYON);
+	private static final Personne DEV_F_LYON_ITO = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_ITO, SEXE_F, VILLE_LYON);
+	private static final Personne TECHLEAD_H_MEY_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_RIS, SEXE_M, VILLE_MEY);
+	private static final Personne TECHLEAD_F_MEY_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_RIS, SEXE_F, VILLE_MEY);
+	private static final Personne DEV_H_MEY_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_RIS, SEXE_M, VILLE_MEY);
+	private static final Personne DEV_H_MEY_ITO = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_ITO, SEXE_M, VILLE_MEY);
+	private static final Personne DEV_H_MEY_GAP = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_GAP, SEXE_M, VILLE_MEY);
+	private static final Personne DEV_H_MEY_IMG = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_IMG, SEXE_M, VILLE_MEY);
+	private static final Personne DEV_F_MEY_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_RIS, SEXE_F, VILLE_MEY);
+	private static final Personne DEV_F_PAR_RIS = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_RIS, SEXE_F, VILLE_PAR);
 	private static final Groupeur groupeur = new Groupeur();
 
 	@Test
@@ -151,6 +156,30 @@ public class GroupeurTest {
 		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreSquad(SQUAD_ITO), is(5));
 	}
 	
+	@Test
+	public void groupeurCreeEquipesRepartiesAuxLimites(){
+		List<Personne> listeDesParticipants = new ArrayList<Personne>(100);
+		Participants participants = new Participants(10, listeDesParticipants);
+		for (int i = 0; i < 5; i++) {listeDesParticipants.add(TECHLEAD_F_LYON_GAP);}
+		for (int i = 0; i < 5; i++) {listeDesParticipants.add(DEV_H_MEY_GAP);}
+		for (int i = 0; i < 5; i++) {listeDesParticipants.add(DEV_F_PAR_RIS);}
+		for (int i = 0; i < 10; i++) {listeDesParticipants.add(TECHLEAD_F_LYON_ITO);}
+		for (int i = 0; i < 6; i++) {listeDesParticipants.add(TECHLEAD_H_MEY_RIS);}
+		for (int i = 0; i < 29; i++) {listeDesParticipants.add(DEV_F_MEY_RIS);}
+		for (int i = 0; i < 20; i++) {listeDesParticipants.add(DEV_H_MEY_ITO);}
+		for (int i = 0; i < 20; i++) {listeDesParticipants.add(DEV_F_LYON_ITO);}
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreTechleads(), lessThanOrEqualTo(3));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreTechleads(), greaterThanOrEqualTo(2));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreSquad(SQUAD_RIS), is(4));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreVille(VILLE_LYON), greaterThanOrEqualTo(3));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreVille(VILLE_LYON), lessThanOrEqualTo(4));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreVille(VILLE_MEY), is(4));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreVille(VILLE_PAR), lessThanOrEqualTo(1));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreSquad(SQUAD_ITO), is(5));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreSquad(SQUAD_GAP), is(1));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreFemmes(), greaterThanOrEqualTo(6));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreFemmes(), lessThanOrEqualTo(7));
+	}
 	
 
 }
