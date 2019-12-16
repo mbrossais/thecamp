@@ -106,6 +106,10 @@ input {
 	text-decoration: none;
 }
 
+input:focus {
+	outline: none;
+}
+
 .card100 {
 	width: 100%;
 	display: flex;
@@ -117,6 +121,7 @@ input {
 	box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
 	border-radius: 4px;
 	background-color: #fff;
+	z-index: 0;
 }
 
 .content {
@@ -127,17 +132,24 @@ input {
 	margin:  50px 0;
 }
 
+.inputNumber:hover, .inputNumber:focus {
+	border: 1px solid black;
+}
+
 .inputNumber {
 	padding: 14.5px 10px;
 	height: 1.1875em;
 	width: 50px;
+	border: 1px solid rgba(0, 0, 0, 0.23);
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.btn:hover {
+.btn:hover, .btn:focus {
 	border: 2px solid black;
 }
 
 .btn {
+	background: white;
 	margin: 8px;
     border: 2px solid rgba(0, 0, 0, 0.23);
     padding: 5px 15px;
@@ -153,8 +165,18 @@ input {
     letter-spacing: 0.02857em;
     text-transform: uppercase;
     cursor: pointer;
-    background-color: transparent;
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
 }
 
+
+.file {
+	z-index: -1;
+	position: absolute;
+	margin-left: -123px;
+	margin-top: 2px;
+}
+
+.label-file {
+	
+}
