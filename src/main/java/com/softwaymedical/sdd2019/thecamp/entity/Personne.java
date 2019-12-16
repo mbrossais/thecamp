@@ -35,6 +35,18 @@ public class Personne {
 		this.sexe = sexe;
 		this.ville = ville;
 	}
+	
+	public boolean isTechLead() {
+		return "TECHLEAD".equals(role);
+	}
+	
+	public boolean isHomme() {
+		return "M".equals(sexe);
+	}
+	
+	public boolean isFemme() {
+		return "F".equals(sexe);
+	}
 
 	public String getNom() {
 		return nom;

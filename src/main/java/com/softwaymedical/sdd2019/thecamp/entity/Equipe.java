@@ -41,7 +41,7 @@ public class Equipe {
 	}
 	
 	public int getNombreHommes() {
-		return getNombreSexe("H");
+		return getNombreSexe("M");
 	}
 
 	public int getNombreVille(String ville) {
