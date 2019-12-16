@@ -15,8 +15,4 @@ public class Equipe {
 		return personnes;
 	}
 
-	public List<Personne> getPersonnes() {
-		return personnes;
-	}
-
 }
