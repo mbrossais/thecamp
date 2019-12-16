@@ -59,6 +59,10 @@ public class Groupeur {
 			}
 		}
 		
+		for (int i = 0; i < reliquats3.size(); i++) {
+			equipes.getEquipes().get(i).getPersonnes().add(reliquats3.get(i));
+		}
+		
 		return equipes;
 	}
 	
