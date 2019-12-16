@@ -56,4 +56,8 @@ public class Equipe {
 		return getNombreVille("Meyreuil");
 	}
 
+	public int getNombreSquad(String squad) {
+		return personnes.stream().filter(p -> p.getSquad().equals(squad)).collect(Collectors.toList()).size();
+	}
+
 }

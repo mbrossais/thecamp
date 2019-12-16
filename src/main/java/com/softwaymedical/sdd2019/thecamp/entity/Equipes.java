@@ -63,4 +63,12 @@ public class Equipes {
 		return getMoyenneVille("Meyreuil");
 	}
 
+	public float getMoyenneSquad(String squad) {
+		int result = 0;
+		for(Equipe equipe : equipes) {
+			result += equipe.getNombreSquad(squad);
+		}
+		return (float) result / equipes.size();
+	}
+
 }
