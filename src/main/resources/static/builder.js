@@ -12,14 +12,8 @@ try {
 
         function displayData(datas) {
 
-            $('body').empty();
             var container = $('<div class="container"></div>');
-            $('body').append(container);
-
-
-
-
-
+            $('.container').append(container);
             
             $(datas.equipes).each(function (i) {
                 var equipe = $('<div class="equipe">Equipe ' +  (i+1) + '</div>');
@@ -111,15 +105,15 @@ try {
 
 
 
-        // var $fileInputTest = $('#test');
-        // // console.log($fileInput);
-        // $fileInputTest.on('change', function () {
-        //     var reader = new FileReader();
-        //     reader.addEventListener('load', function () {
-        //         var result = displayData(JSON.parse(reader.result));
-        //     });
-        //     reader.readAsText($fileInputTest.get(0).files[0]);
-        // });
+        var $fileInputTest = $('#test');
+        // console.log($fileInput);
+        $fileInputTest.on('change', function () {
+            var reader = new FileReader();
+            reader.addEventListener('load', function () {
+                var result = displayData(JSON.parse(reader.result));
+            });
+            reader.readAsText($fileInputTest.get(0).files[0]);
+        });
 
     })(jQuery);
 } catch (e) {
