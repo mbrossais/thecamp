@@ -15,12 +15,36 @@ public class Equipes {
 		return equipes;
 	}
 	
-	public float getMoyenneRole(String role) {
+	private float getMoyenneRole(String role) {
 		int result = 0;
 		for(Equipe equipe : equipes) {
 			result += equipe.getNombreRole(role);
 		}
 		return (float) result / equipes.size();
+	}
+	
+	public float getMoyenneDeveloppeurs() {
+		return getMoyenneRole("DEVELOPPEUR");
+	}
+	
+	public float getMoyenneTechlead() {
+		return getMoyenneRole("TECHLEAD");
+	}
+	
+	private float getMoyenneSexe(String sexe) {
+		int result = 0;
+		for(Equipe equipe : equipes) {
+			result += equipe.getNombreSexe(sexe);
+		}
+		return (float) result / equipes.size();
+	}
+	
+	public float getMoyenneFemmes() {
+		return getMoyenneSexe("F");
+	}
+	
+	public float getMoyenneHommes() {
+		return getMoyenneSexe("H");
 	}
 
 }
