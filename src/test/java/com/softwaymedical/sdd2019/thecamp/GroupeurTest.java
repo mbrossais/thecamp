@@ -138,46 +138,20 @@ public class GroupeurTest {
 		for (int i = 0; i < 10; i++) {listeDesParticipants.add(TECHLEAD_F_LYON_RIS);}
 		for (int i = 0; i < 15; i ++){listeDesParticipants.add(DEV_H_MEY_RIS);}
 		for (int i = 0; i < 5; i ++){listeDesParticipants.add(DEV_H_LYON_RIS);}
-		Participants participants = new Participants(10, listeDesParticipants);
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreLyon(), is(5));
+		Participants participants = new Participants(8, listeDesParticipants);
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreVille(VILLE_LYON), is(3)); //
 	}
 	
 	@Test
 	public void groupeurCreeEquipesRepartiesParSquad(){
-		List<Personne> listeDesParticipants = new ArrayList<Personne>(40);
-		for (int i = 0; i < 5; i++) {listeDesParticipants.add(TECHLEAD_F_MEY_RIS);}
-		for (int i = 0; i < 20; i++) {listeDesParticipants.add(DEV_H_MEY_ITO);}
-		for (int i = 0; i < 10; i ++){listeDesParticipants.add(DEV_H_MEY_GAP);}
-		for (int i = 0; i < 5; i ++){listeDesParticipants.add(DEV_H_MEY_IMG);}
-		Participants participants = new Participants(10, listeDesParticipants);
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreSquad(SQUAD_IMG), is(greaterThanOrEqualTo(2)));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreSquad(SQUAD_ITO), is(5));
+		List<Personne> listeDesParticipants = new ArrayList<Personne>(10);
+		for (int i = 0; i < 3; i++) {listeDesParticipants.add(TECHLEAD_F_MEY_RIS);}
+		for (int i = 0; i < 1; i++) {listeDesParticipants.add(DEV_H_MEY_ITO);}
+		for (int i = 0; i < 3; i ++){listeDesParticipants.add(DEV_H_MEY_GAP);}
+		for (int i = 0; i < 3; i ++){listeDesParticipants.add(DEV_H_MEY_IMG);}
+		Participants participants = new Participants(3, listeDesParticipants);
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreSquad(SQUAD_IMG), lessThanOrEqualTo(2));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreSquad(SQUAD_ITO), lessThanOrEqualTo(2));
 	}
-	
-	@Test
-	public void groupeurCreeEquipesRepartiesAuxLimites(){
-		List<Personne> listeDesParticipants = new ArrayList<Personne>(100);
-		Participants participants = new Participants(10, listeDesParticipants);
-		for (int i = 0; i < 5; i++) {listeDesParticipants.add(TECHLEAD_F_LYON_GAP);}
-		for (int i = 0; i < 5; i++) {listeDesParticipants.add(DEV_H_MEY_GAP);}
-		for (int i = 0; i < 5; i++) {listeDesParticipants.add(DEV_F_PAR_RIS);}
-		for (int i = 0; i < 10; i++) {listeDesParticipants.add(TECHLEAD_F_LYON_ITO);}
-		for (int i = 0; i < 6; i++) {listeDesParticipants.add(TECHLEAD_H_MEY_RIS);}
-		for (int i = 0; i < 29; i++) {listeDesParticipants.add(DEV_F_MEY_RIS);}
-		for (int i = 0; i < 20; i++) {listeDesParticipants.add(DEV_H_MEY_ITO);}
-		for (int i = 0; i < 20; i++) {listeDesParticipants.add(DEV_F_LYON_ITO);}
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreTechleads(), lessThanOrEqualTo(3));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreTechleads(), greaterThanOrEqualTo(2));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreSquad(SQUAD_RIS), is(4));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreVille(VILLE_LYON), greaterThanOrEqualTo(3));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreVille(VILLE_LYON), lessThanOrEqualTo(4));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreVille(VILLE_MEY), is(4));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreVille(VILLE_PAR), lessThanOrEqualTo(1));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreSquad(SQUAD_ITO), is(5));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreSquad(SQUAD_GAP), is(1));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreFemmes(), greaterThanOrEqualTo(6));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(5).getNombreFemmes(), lessThanOrEqualTo(7));
-	}
-	
 
 }
