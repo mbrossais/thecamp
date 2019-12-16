@@ -9,12 +9,31 @@
 </head>
 
 <body>
-    <span>Nombre de personnes par groupe: </span><input type="text" id="nbPersGroup"><br>
-    <input id="input" type="file" /><br>
-    <input type="button" id="calculBtn"  value="Calculer">
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="./builder.js"></script>
-    <script src="./node_modules/csvtojson/browser/csvtojson.min.js"></script>
+	<div class="card100">
+		<div class="card50">
+			<div class="content container">
+				LISTE
+			</div>
+		</div>
+		<div class="card50">
+			<div class="content">
+				<h1>Groupes generator !</h1>
+				<div class="line">
+			    	<span>Nombre de personnes par groupe : </span><input class="inputNumber" type="number" id="nbPersGroup">
+			    </div>
+				<div class="line">
+                    <!-- <input class="btn" id="input" type="file" /> -->
+                    <input class="btn" id="test" type="file" />
+			    </div>
+				<div class="line">
+			    	<input class="btn" type="button" id="calculBtn"  value="Calculer">
+			    </div>
+			    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+			    <script type="text/javascript" src="./builder.js"></script>
+			    <script src="./node_modules/csvtojson/browser/csvtojson.min.js"></script>
+		   	</div>
+		</div>
+	</div>
 </body>
 
 </html>

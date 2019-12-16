@@ -1,9 +1,7 @@
 package com.softwaymedical.sdd2019.thecamp;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.lessThanOrEqualTo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +23,9 @@ public class GroupeurTest {
 	private static final String DEVELOPPEUR = "DEVELOPPEUR";
 	private static final String SQUAD_RIS = "RIS";
 	private static final String SEXE_M = "M";
-	private static final String SEXE_F = "F";
 	private static final String VILLE_LYON = "Lyon";
 	private static final Personne TECHLEAD_H_LYON = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_RIS, SEXE_M, VILLE_LYON);
-	private static final Personne TECHLEAD_F_LYON = new Personne(NOM, PC_PORTABLE, PRENOM, LEADTECH, SQUAD_RIS, SEXE_F, VILLE_LYON);
 	private static final Personne DEV_H_LYON = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_RIS, SEXE_M, VILLE_LYON);
-	private static final Personne DEV_F_LYON = new Personne(NOM, PC_PORTABLE, PRENOM, DEVELOPPEUR, SQUAD_RIS, SEXE_F, VILLE_LYON);
 	private static final Groupeur groupeur = new Groupeur();
 
 	@Test
@@ -74,7 +69,6 @@ public class GroupeurTest {
 		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(1).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
 		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(2).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
 	}
-	
 	@Test
 	public void groupeurCreeEquipesAvecAuMoinsUnTechLead2(){
 		List<Personne> listeDesParticipants = new ArrayList<Personne>(12);
@@ -86,24 +80,19 @@ public class GroupeurTest {
 		listeDesParticipants.add(DEV_H_LYON);
 		listeDesParticipants.add(DEV_H_LYON);
 		listeDesParticipants.add(DEV_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
 		listeDesParticipants.add(DEV_H_LYON);
-		listeDesParticipants.add(TECHLEAD_H_LYON);
-		listeDesParticipants.add(TECHLEAD_H_LYON);
-		listeDesParticipants.add(TECHLEAD_H_LYON);
-		listeDesParticipants.add(TECHLEAD_H_LYON);
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreTechleads(), is(greaterThanOrEqualTo(1)));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(1).getNombreTechleads(), is(greaterThanOrEqualTo(1)));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(2).getNombreTechleads(), is(greaterThanOrEqualTo(1)));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(1).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(2).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
 	}
 	
-	@Test
-	public void groupeurCreeEquipesAvecLeBonNombreDeFilles(){
-		List<Personne> listeDesParticipants = new ArrayList<Personne>(40);
-		for (int i = 0; i < 15; i++) {listeDesParticipants.add(TECHLEAD_F_LYON);}
-		for (int i = 0; i < 25; i ++){listeDesParticipants.add(DEV_H_LYON);}
-		Participants participants = new Participants(4, listeDesParticipants);
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreFemmes(), greaterThanOrEqualTo(1));
-		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(3).getNombreFemmes(), lessThanOrEqualTo(2));
-	}
+	
+	
+	
+	
 
 }

@@ -15,7 +15,7 @@ public class Groupeur {
 		Equipes equipes = new Equipes();
 		int nbEquipes = Math.round(participants.getListeParticipant().size() / participants.getNbPersGroup());
 		
-		// init des équipes
+		
 		for (int i = 0; i < nbEquipes; i++) {
 			equipes.getEquipes().add(new Equipe());
 		}
@@ -57,10 +57,6 @@ public class Groupeur {
 			} else {
 				reliquats3.add(participant);
 			}
-		}
-		
-		for (int i = 0; i < reliquats3.size(); i++) {
-			equipes.getEquipes().get(i).getPersonnes().add(reliquats3.get(i));
 		}
 		
 		return equipes;

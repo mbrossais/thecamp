@@ -25,6 +25,7 @@ public class Participants {
 		return listeParticipant.stream().filter(p -> p.getSexe().equals(sexe)).collect(Collectors.toList()).size();
 	}
 	
+
 	public int getNombreVille(String ville) {
 		return listeParticipant.stream().filter(p -> p.getVille().equals(ville)).collect(Collectors.toList()).size();
 	}
