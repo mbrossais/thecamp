@@ -12,6 +12,14 @@ public class Equipes {
 
 	public List<Equipe> getEquipes() {
 		return equipes;
-	}	
+	}
+	
+	public float getMoyenneRole(String role) {
+		int result = 0;
+		for(Equipe equipe : equipes) {
+			result += equipe.getNombreRole(role);
+		}
+		return (float) result / equipes.size();
+	}
 
 }
