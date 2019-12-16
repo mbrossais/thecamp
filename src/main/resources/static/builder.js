@@ -11,7 +11,8 @@ try {
 
 
         function displayData(datas) {
-
+            $('.container').empty();
+            
             var container = $('<div class="container"></div>');
             $('.container').append(container);
             
