@@ -10,9 +10,7 @@ import java.util.List;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
-import org.mockito.internal.matchers.GreaterOrEqual;
 
-import com.softwaymedical.sdd2019.thecamp.Groupeur;
 import com.softwaymedical.sdd2019.thecamp.entity.Participants;
 import com.softwaymedical.sdd2019.thecamp.entity.Personne;
 
