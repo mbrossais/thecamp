@@ -11,7 +11,8 @@ try {
 
 
         function displayData(datas) {
-
+            $('.container').empty();
+            
             var container = $('<div class="container"></div>');
             $('.container').append(container);
             
@@ -64,7 +65,7 @@ try {
                     }
                 })
                 .then(function (json) {
-                    console.log(JSON.stringify(json));
+                    // console.log(JSON.stringify(json));
                     displayData(json);
                 }).catch(function (error) {
                     console.error("Posting data fail " + error.message);
@@ -96,7 +97,10 @@ try {
                     // .fromFile(csvFilePath)
                     .then((jsonObj) => {
                         // console.log(jsonObj);
-                        listeParticipant = jsonObj;
+                        listeParticipant = jsonObj.filter(function (item) {
+                            return item.Nom !== "";
+                        });
+                        console.log(listeParticipant);
                     })
             });
             reader.readAsText($fileInput.get(0).files[0]);
