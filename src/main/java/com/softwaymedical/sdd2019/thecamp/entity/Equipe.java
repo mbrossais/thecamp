@@ -24,4 +24,8 @@ public class Equipe {
 		return personnes.stream().filter(p -> p.getRole().equals(role)).collect(Collectors.toList()).size();
 	}
 
+	public int getNombreSexe(String sexe) {
+		return personnes.stream().filter(p -> p.getSexe().equals(sexe)).collect(Collectors.toList()).size();
+	}
+
 }
