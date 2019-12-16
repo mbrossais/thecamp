@@ -34,7 +34,7 @@ public class GroupeurTest {
 	}
 	
 	@Test
-	public void groupeurCreeUneEquipeDeDeuxPersonnes(){
+	public void groupeurCreeDeuxEquipesDeDeuxPersonnes(){
 		List<Personne> listeDesParticipants = new ArrayList<Personne>(4);
 		Participants participants = new Participants(1, listeDesParticipants);
 		listeDesParticipants.add(TECHLEAD_H_LYON);
@@ -44,6 +44,23 @@ public class GroupeurTest {
 		assertThat(groupeur.faitDesGroupes(participants).getEquipes().size(), is(2)); // deux equipes
 		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getPersonnes().size(), is(2)); // deux personnes dans l'equipe
 	}
+	
+	@Test
+	public void groupeurCreeUneEquipeDeDeuxPersonnesEtUneEquipeDeTroisPersonnes(){
+		List<Personne> listeDesParticipants = new ArrayList<Personne>(4);
+		Participants participants = new Participants(1, listeDesParticipants);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().size(), is(2)); // deux equipes
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getPersonnes().size(), is(2)); // deux personnes dans l'equipe
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(1).getPersonnes().size(), is(3)); // trois personnes dans l'equipe
+	}
+	
+	
+	
 	
 
 }
