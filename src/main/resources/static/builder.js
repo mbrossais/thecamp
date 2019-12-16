@@ -12,7 +12,7 @@ try {
 
         function displayData(datas) {
             $('.container').empty();
-            
+
             var container = $('<div class="container"></div>');
             $('.container').append(container);
             
@@ -25,7 +25,7 @@ try {
                 
                 $(datas.equipes[i].personnes).each(function (j) {
                     var personne = datas.equipes[i].personnes[j];
-                    personnes.append($('<li class="personne '+ personne.Sexe + ' ' + personne.ROLE +'">' + personne.Nom + ' ' + personne["Prénom"] + ' ' + personne.SQUAD+'</li>'));
+                    personnes.append($('<li class="personne '+ personne.Sexe + ' ' + personne.ROLE +'">' + personne.Nom + ' ' + personne["Prénom"] + ' - ' + personne.SQUAD + ' (' + personne.Ville +')</li>'));
                 });
 
             });
