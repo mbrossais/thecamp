@@ -50,7 +50,7 @@ public class GroupeurTest {
 	}
 	
 	@Test
-	public void groupeurRepartiLesLeadTechs(){
+	public void groupeurCreeEquipesAvecAuMoinsUnTechLead(){
 		List<Personne> listeDesParticipants = new ArrayList<Personne>(12);
 		Participants participants = new Participants(4, listeDesParticipants);
 		listeDesParticipants.add(TECHLEAD_H_LYON);
@@ -64,6 +64,26 @@ public class GroupeurTest {
 		listeDesParticipants.add(DEV_H_LYON);
 		listeDesParticipants.add(DEV_H_LYON);
 		listeDesParticipants.add(DEV_H_LYON);
+		listeDesParticipants.add(DEV_H_LYON);
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(1).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
+		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(2).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
+	}
+	@Test
+	public void groupeurCreeEquipesAvecAuMoinsUnTechLead2(){
+		List<Personne> listeDesParticipants = new ArrayList<Personne>(12);
+		Participants participants = new Participants(4, listeDesParticipants);
+		listeDesParticipants.add(DEV_H_LYON);
+		listeDesParticipants.add(DEV_H_LYON);
+		listeDesParticipants.add(DEV_H_LYON);
+		listeDesParticipants.add(DEV_H_LYON);
+		listeDesParticipants.add(DEV_H_LYON);
+		listeDesParticipants.add(DEV_H_LYON);
+		listeDesParticipants.add(DEV_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
+		listeDesParticipants.add(TECHLEAD_H_LYON);
 		listeDesParticipants.add(DEV_H_LYON);
 		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(0).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
 		assertThat(groupeur.faitDesGroupes(participants).getEquipes().get(1).getNombreTechleads(), is(Matchers.greaterThanOrEqualTo(1)));
