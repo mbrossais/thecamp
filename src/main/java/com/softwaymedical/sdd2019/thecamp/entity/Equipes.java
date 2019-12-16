@@ -4,6 +4,14 @@ import java.util.List;
 
 public class Equipes {
 	
-	private List<Equipe> equipes;
+	private final List<Equipe> equipes;
+
+	public Equipes(List<Equipe> equipes) {
+		this.equipes = equipes;
+	}
+
+	public List<Equipe> getEquipes() {
+		return equipes;
+	}	
 
 }
