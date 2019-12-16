@@ -36,7 +36,7 @@ public class GroupeurTest {
 	@Test
 	public void groupeurCreeDeuxEquipesDeDeuxPersonnes(){
 		List<Personne> listeDesParticipants = new ArrayList<Personne>(4);
-		Participants participants = new Participants(1, listeDesParticipants);
+		Participants participants = new Participants(2, listeDesParticipants);
 		listeDesParticipants.add(TECHLEAD_H_LYON);
 		listeDesParticipants.add(TECHLEAD_H_LYON);
 		listeDesParticipants.add(TECHLEAD_H_LYON);
@@ -48,7 +48,7 @@ public class GroupeurTest {
 	@Test
 	public void groupeurCreeUneEquipeDeDeuxPersonnesEtUneEquipeDeTroisPersonnes(){
 		List<Personne> listeDesParticipants = new ArrayList<Personne>(4);
-		Participants participants = new Participants(1, listeDesParticipants);
+		Participants participants = new Participants(2, listeDesParticipants);
 		listeDesParticipants.add(TECHLEAD_H_LYON);
 		listeDesParticipants.add(TECHLEAD_H_LYON);
 		listeDesParticipants.add(TECHLEAD_H_LYON);
