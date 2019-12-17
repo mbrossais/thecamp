@@ -193,3 +193,12 @@ input:focus {
 .personne.TECHLEAD {
     font-weight: bold;
 }
+
+.personne > span.city {
+    font-weight: normal;
+    font-style: italic;
+}
+
+.personne > span.squad {
+    font-weight: normal;
+}

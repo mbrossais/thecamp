@@ -11,7 +11,7 @@ public class EquipesTest {
 	private static final Personne DEVELOPPEUR = new Personne("NOM", "PCPORTABLE", "PRENOM", "DEVELOPPEUR", "SQUAD", "SEXE", "VILLE");
 	private static final Personne TECHLEAD = new Personne("NOM", "PCPORTABLE", "PRENOM", "TECHLEAD", "SQUAD", "SEXE", "VILLE");
 	private static final Personne FEMME = new Personne("NOM", "PCPORTABLE", "PRENOM", "ROLE", "SQUAD", "F", "VILLE");
-	private static final Personne HOMME = new Personne("NOM", "PCPORTABLE", "PRENOM", "ROLE", "SQUAD", "H", "VILLE");
+	private static final Personne HOMME = new Personne("NOM", "PCPORTABLE", "PRENOM", "ROLE", "SQUAD", "M", "VILLE");
 	private static final Personne LYON = new Personne("NOM", "PCPORTABLE", "PRENOM", "ROLE", "SQUAD", "SEXE", "Lyon");
 	private static final Personne MEYREUIL = new Personne("NOM", "PCPORTABLE", "PRENOM", "ROLE", "SQUAD", "SEXE", "Meyreuil");
 	private static final Personne GAP = new Personne("NOM", "PCPORTABLE", "PRENOM", "ROLE", "GAP", "SEXE", "VILLE");

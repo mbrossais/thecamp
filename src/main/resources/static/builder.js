@@ -25,7 +25,7 @@ try {
                 
                 $(datas.equipes[i].personnes).each(function (j) {
                     var personne = datas.equipes[i].personnes[j];
-                    personnes.append($('<li class="personne '+ personne.Sexe + ' ' + personne.ROLE +'">' + personne.Nom + ' ' + personne["Prénom"] + ' - ' + personne.SQUAD + ' (' + personne.Ville +')</li>'));
+                    personnes.append($(`<li class="personne ${personne.Sexe} ${personne.ROLE}"><span class="name">${personne.Nom} ${personne["Prénom"]}</span><span class="squad"> - ${personne.SQUAD}</span><span class="city"> (${personne.Ville})</span></li>`));
                 });
 
             });
